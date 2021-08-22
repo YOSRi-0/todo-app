@@ -27,6 +27,7 @@ body {
   font-size: 1.125rem;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  background:  var(--clr-neutral-200);
 }
 
 /* typography */
@@ -98,7 +99,7 @@ input[type="text"]::placeholder {
 
 /* layout */
 .content {
-  background: url("../img/bg-desktop-light.jpg") top, var(--clr-neutral-200);
+  background: url("../img/bg-desktop-light.jpg") top;
   background-repeat: no-repeat;
   background-size: 60rem;
   height: 100vh;
