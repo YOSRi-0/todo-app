@@ -12,6 +12,8 @@
       rel="stylesheet"
     />
     <script src="./js/modeSwitcher.js" defer></script>
+    <script defer src="./js/checkbox.js"></script>
+    <script src="./js/todoList.js" defer></script>
     <title>ToDo</title>
   </head>
   <body>
@@ -28,7 +30,11 @@
         <div class="todo__items">
           <div class="todo__add-item">
             <div class="checkbox__wrapper">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                class="checkbox add-todo-checkbox"
+                name="isCompleted"
+              />
               <svg
                 class="checked-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,50 +55,7 @@
               placeholder="Create a new todo"
             />
           </div>
-          <div class="todo__items-list">
-            <div class="todo__item">
-              <div class="checkbox__wrapper">
-                <input type="checkbox" />
-                <svg
-                  class="checked-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="11"
-                  height="9"
-                >
-                  <path
-                    fill="none"
-                    stroke="#FFF"
-                    stroke-width="2"
-                    d="M1 4.304L3.696 7l6-6"
-                  />
-                </svg>
-              </div>
-              <p class="todo__item-text">Complete jogging around</p>
-              <img class="cross-icon" src="./img/icon-cross.svg" alt="" />
-            </div>
-            <div class="todo__item">
-              <div class="checkbox__wrapper">
-                <input type="checkbox" />
-                <svg
-                  class="checked-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="11"
-                  height="9"
-                >
-                  <path
-                    fill="none"
-                    stroke="#FFF"
-                    stroke-width="2"
-                    d="M1 4.304L3.696 7l6-6"
-                  />
-                </svg>
-              </div>
-              <p class="todo__item-text">
-                Complete jogging around the house of darkness
-              </p>
-              <img class="cross-icon" src="./img/icon-cross.svg" alt="" />
-            </div>
-          </div>
+          <div class="todo__items-list"></div>
           <div class="todo__info">
             <p class="items-left">5 items left</p>
             <a href="" class="btn-cc">Clear Completed</a>

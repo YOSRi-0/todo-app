@@ -165,6 +165,7 @@ input[type="text"]::placeholder {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
 }
 input[type="checkbox"] {
   -webkit-appearance: none;
@@ -175,8 +176,9 @@ input[type="checkbox"] {
   width: 1.5em;
   border-radius: 50%;
   outline: none;
+  cursor: pointer;
 }
-.icon {
+.checkbox:checked {
   background: -o-linear-gradient(45deg, #57ddff, #c058f3);
   background: linear-gradient(45deg, #57ddff, #c058f3);
 }
@@ -192,6 +194,7 @@ input[type="text"] {
   background: transparent;
   border: none;
   outline: none;
+  font-size: 0.9rem;
 }
 .todo__items-list {
 }
@@ -230,7 +233,9 @@ input[type="text"] {
 .btn-filter + .btn-filter {
   margin-left: 1em;
 }
-
+.is-completed {
+  text-decoration: line-through;
+}
 /* ***************************** Night Mode ***************************************** */
 .dark-bg-items {
   background: var(--clr-dark-neutral-500);
@@ -283,23 +288,25 @@ input[type="text"] {
   }
   .todo__item-text,
   .items-left,
-  .btn-cc {
-    font-size: 1.125rem;
+  .btn-cc,
+  .todo__input {
+    font-size: 1rem;
   }
+
   input[type="text"]::-webkit-input-placeholder {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   input[type="text"]::-moz-placeholder {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   input[type="text"]:-ms-input-placeholder {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   input[type="text"]::-ms-input-placeholder {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   input[type="text"]::placeholder {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   .btn-filter {
     font-size: 1.125rem;
