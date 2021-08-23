@@ -189,7 +189,7 @@ input[type="checkbox"] {
 }
 input[type="text"] {
   width: 100%;
-  background-size: var(--clr-neutral-100);
+  background: var(--clr-neutral-100);
   border: none;
   outline: none;
 }
