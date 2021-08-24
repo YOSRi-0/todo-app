@@ -1,17 +1,19 @@
 const ModeSwitcher = document.querySelector(".theme-picker");
 let darkMode = false;
+let isUpdatingUI = false;
 const switchModeHandler = () => {
   switchMode();
   darkMode = !darkMode;
-  console.log(darkMode);
 };
 const switchMode = () => {
+  isUpdatingUI && (darkMode = !darkMode);
   BackgroundChanger();
   ItemsBackgroundChanger();
   BorderChanger();
   TextColorChanger();
   ItemTextColorChanger();
   ChangeSwitchIcon();
+  isUpdatingUI && (darkMode = !darkMode);
 };
 const BackgroundChanger = () => {
   const contentEl = document.querySelector(".content");
@@ -47,7 +49,6 @@ const BorderChanger = () => {
   BorderEls.push(...todoItems);
   if (darkMode) {
     BorderEls.forEach((el) => {
-      console.log(el);
       el.classList.remove("dark-border");
     });
   } else {
@@ -66,7 +67,7 @@ const TextColorChanger = () => {
     clearCompletedEl,
     ...filterButtons
   );
-  if (darkMode) {
+  if (darkMode && !isUpdatingUI) {
     TextEls.forEach((el) => {
       el.classList.remove("dark-mode-text-clr");
     });
@@ -76,7 +77,7 @@ const TextColorChanger = () => {
 };
 const ItemTextColorChanger = () => {
   const itemTextEls = document.querySelectorAll(".todo__item-text");
-  if (darkMode === true) {
+  if (darkMode) {
     itemTextEls.forEach((el) => {
       el.classList.remove("dark-mode-item-text-clr");
     });
@@ -90,11 +91,11 @@ const ChangeSwitchIcon = () => {
     switchIconEl.src = "./img/icon-sun.svg";
     switchIconEl.classList.remove("light-mode");
     switchIconEl.classList.add("dark-mode");
-    return;
+  } else {
+    switchIconEl.src = "./img/icon-moon.svg";
+    switchIconEl.classList.add("light-mode");
+    switchIconEl.classList.remove("dark-mode");
   }
-  switchIconEl.src = "./img/icon-moon.svg";
-  switchIconEl.classList.add("light-mode");
-  switchIconEl.classList.remove("dark-mode");
 };
 ModeSwitcher.addEventListener("click", switchModeHandler);
 /* -------------------------- light mode -------------------- */

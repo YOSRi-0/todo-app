@@ -11,10 +11,26 @@ class TodoListSLL {
     this.tail = null;
     this.size = 0;
   }
-
+  clearCompletedTasks() {
+    if (!this.head) return null;
+    let current = this.head;
+    while (current) {
+      const taskIndex = current.data.id;
+      const isChecked = current.data.element.querySelector(".checkbox").checked;
+      if (isChecked) {
+        const removedTask = this.remove(taskIndex);
+        current = removedTask.next;
+      } else {
+        current = current.next;
+      }
+      this.updateTodoList();
+      this.updateIndeces();
+    }
+  }
   updateTodoList() {
     const todoListEl = document.querySelector(".todo__items-list");
     let currentItem = this.head;
+    todoListEl.innerHTML = "";
     while (currentItem) {
       todoListEl.appendChild(currentItem.data.element);
       currentItem = currentItem.next;
@@ -40,6 +56,7 @@ class TodoListSLL {
     newTodoCheckboxEl.checked = false;
     newTodoInputEl.value = "";
     this.updateTodoList();
+    this.updateIndeces();
     deleteTodoEl.addEventListener("click", (e) => {
       this.updateIndeces();
       this.remove(newTodoObject.id);
@@ -223,12 +240,25 @@ class TodoListSLL {
     }
   }
 }
+function updateUI() {
+  isUpdatingUI = true;
+  switchMode();
+  isUpdatingUI = false;
+}
 
 let l = new TodoListSLL();
 const input = document.querySelector(".todo__input");
 input.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
-    l.addNewTodo();
-    manageCheckbox();
+    if (event.target.value.trim().length) {
+      l.addNewTodo();
+      manageCheckbox();
+      updateUI();
+    }
   }
+});
+const clearCompletedTasksEl = document.querySelector(".btn-cc");
+clearCompletedTasksEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  l.clearCompletedTasks();
 });
