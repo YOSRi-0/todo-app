@@ -39,6 +39,7 @@ class TodoListSLL {
 
   addNewTodo() {
     const newTodoCheckboxEl = document.querySelector(".add-todo-checkbox");
+    const checkboxAddIcon = newTodoCheckboxEl.nextElementSibling;
     const newTodoInputEl = document.querySelector(".todo__input");
     const deleteTodoEl = this.createDeleteIconEl(
       "img",
@@ -55,6 +56,7 @@ class TodoListSLL {
     this.unshift(newTodoObject);
     newTodoCheckboxEl.checked = false;
     newTodoInputEl.value = "";
+    checkboxAddIcon.style.display = "none";
     this.updateTodoList();
     this.updateIndeces();
     deleteTodoEl.addEventListener("click", (e) => {

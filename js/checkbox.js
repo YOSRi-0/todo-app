@@ -1,4 +1,10 @@
 const manageCheckbox = () => {
+  const newTodoCheckboxEl = document.querySelector(".add-todo-checkbox");
+  const checkboxAddIcon = newTodoCheckboxEl.nextElementSibling;
+  const newTodoInputEl = document.querySelector(".todo__input");
+  newTodoCheckboxEl.checked = false;
+  checkboxAddIcon.style.display = "none";
+  newTodoInputEl.value = "";
   const checkboxWrapperEls = document.querySelectorAll(".checkbox__wrapper");
   checkboxWrapperEls.forEach((el) => {
     const checkboxEl = el.querySelector(".checkbox");
